@@ -76,8 +76,6 @@ header {
   flex-direction: column;
 }
 .nameAndDeletteButton {
-  /* border-radius: 12px; */
-  /* background-color: rgb(158, 158, 158); */
   color: rgb(255, 255, 255);
   padding: 1rem;
   display: flex;
@@ -87,6 +85,9 @@ header {
 }
 .titleName {
   font-size: 2rem;
+  overflow-y: auto;
+  max-width: 200px;
+  white-space: nowrap;
 }
 
 .deleteButton {
