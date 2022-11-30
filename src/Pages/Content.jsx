@@ -39,11 +39,17 @@ export default function Content() {
 
   function showContainerCreateMarker() {
     setShowContainer(!showContainer);
+
+    if (showContainer === false) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflowY = "auto";
+    }
   }
 
   function addContainerInfo() {
     if (names.length < 1) {
-      alert("Digite um nome");
+      alert("Preencha o campo de textos");
       return;
     }
 
@@ -68,7 +74,9 @@ export default function Content() {
   function moreOnePoint(id) {
     let mapping = arrayContainerInfo.map((item) => {
       if (item.id === id) {
-        item.spots += 1;
+        if (item.spots < 1000) {
+          item.spots += 1;
+        }
       }
       return item;
     });
@@ -76,11 +84,15 @@ export default function Content() {
     setArrayContainerInfo(mapping);
     localStorage.setItem("arrayContainerInfoLocal", JSON.stringify(mapping));
   }
+
   function lessOnePoint(id) {
     let mapping = arrayContainerInfo.map((item) => {
       if (item.id === id) {
-        item.spots = item.spots - 1;
+        if (item.spots > 0) {
+          item.spots = item.spots - 1;
+        }
       }
+
       return item;
     });
 
@@ -117,7 +129,7 @@ export default function Content() {
           <button onClick={showContainerCreateMarker}>Adicionar</button>
         </div>
       </header>
-      <main className="containerContent">
+      <main className="containerMain">
         {arrayContainerInfo.map((item, index) => (
           <section key={index} className="containerInfo">
             <div className="nameAndDeletteButton">
