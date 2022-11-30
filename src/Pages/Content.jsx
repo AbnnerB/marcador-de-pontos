@@ -89,7 +89,7 @@ export default function Content() {
   }
 
   return (
-    <>
+    <div className="body">
       <article
         style={showContainer ? { display: "flex" } : { display: "none" }}
         className="backgroundContainerCreate"
@@ -112,10 +112,12 @@ export default function Content() {
       </article>
 
       <header>
-        <h1>Contador de Pontos</h1>
-        <button onClick={showContainerCreateMarker}>Adicionar</button>
+        <div className="headerContent">
+          <h1>Contador de Pontos</h1>
+          <button onClick={showContainerCreateMarker}>Adicionar</button>
+        </div>
       </header>
-      <main className="container">
+      <main className="containerContent">
         {arrayContainerInfo.map((item, index) => (
           <section key={index} className="containerInfo">
             <div className="nameAndDeletteButton">
@@ -139,6 +141,6 @@ export default function Content() {
           </section>
         ))}
       </main>
-    </>
+    </div>
   );
 }
