@@ -38,13 +38,12 @@ export default function Content() {
   }, []);
 
   function showContainerCreateMarker() {
-    setShowContainer(!showContainer);
-
     if (showContainer === false) {
       document.body.style.overflowY = "hidden";
     } else {
       document.body.style.overflowY = "auto";
     }
+    setShowContainer(!showContainer);
   }
 
   function addContainerInfo() {
@@ -61,7 +60,7 @@ export default function Content() {
     setIds(ids + 1);
 
     setArrayContainerInfo([...arrayContainerInfo, newObj]);
-    setShowContainer(!showContainer);
+    showContainerCreateMarker();
   }
 
   function deleteContainerInfo(id) {
@@ -111,6 +110,7 @@ export default function Content() {
 
           <input
             type="text"
+            maxLength="20"
             placeholder="Digite um nome..."
             value={names}
             onChange={(e) => setNames(e.target.value)}
