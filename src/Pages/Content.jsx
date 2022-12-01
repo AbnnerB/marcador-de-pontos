@@ -183,32 +183,8 @@ export default function Content() {
               deleteContainerInfo={deleteContainerInfo}
               lessOnePoint={lessOnePoint}
               moreOnePoint={moreOnePoint}
-              // nameUser={item.name}
-              // idButton={item.id}
-              // pontos={item.spots}
             />
           </div>
-
-          // <section key={index} className="containerInfo">
-          //   <div className="nameAndDeletteButton">
-          //     <p className="titleName">{item.name}</p>
-          //     <button
-          //       className="deleteButton"
-          //       onClick={() => deleteContainerInfo(item.id)}
-          //     >
-          //       <AiFillDelete />
-          //     </button>
-          //   </div>
-          //   <div className="spots">
-          //     <button onClick={() => lessOnePoint(item.id)}>
-          //       <BsBookmarkDash />
-          //     </button>
-          //     <span>{item.spots}</span>
-          //     <button onClick={() => moreOnePoint(item.id)}>
-          //       <BsBookmarkPlus />
-          //     </button>
-          //   </div>
-          // </section>
         ))}
       </main>
     </div>
