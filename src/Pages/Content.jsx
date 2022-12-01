@@ -74,10 +74,14 @@ export default function Content() {
   }
 
   function deleteContainerInfo(id) {
-    let filtered = arrayContainerInfo.filter((item) => item.id !== id);
-    setArrayContainerInfo(filtered);
+    let confirm = window.confirm("Deseja realmente deletar esse item?");
 
-    localStorage.setItem("arrayContainerInfoLocal", JSON.stringify(filtered));
+    let filtered = arrayContainerInfo.filter((item) => item.id !== id);
+
+    if (confirm === true) {
+      setArrayContainerInfo(filtered);
+      localStorage.setItem("arrayContainerInfoLocal", JSON.stringify(filtered));
+    }
   }
 
   function moreOnePoint(id) {
