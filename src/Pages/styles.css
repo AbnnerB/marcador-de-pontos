@@ -26,10 +26,21 @@
 .containerCreateMarker h2 {
   margin-bottom: 1em;
 }
-.containerCreateMarker input {
+
+.inputCreateMarker {
   margin-bottom: 1rem;
+  display: block;
 }
-.containerCreateMarker div {
+
+.boxColors {
+  width: 100%;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.divButtonsCreateCancel {
+  margin-top: 1rem;
   display: flex;
   gap: 1rem;
 }
@@ -105,11 +116,16 @@ header {
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
   gap: 1rem;
   padding: 2rem 1rem;
   background-color: antiquewhite;
   border-radius: 0px 0px 9px 9px;
+}
+.spotsFlex {
+  display: flex;
 }
 
 .spots span {
@@ -155,6 +171,7 @@ header {
   .containerInfo {
     border: none;
     border-bottom: 3px solid black;
+
     min-width: 100px;
     width: 100%;
     max-width: 450px;
@@ -168,9 +185,18 @@ header {
 
   .nameAndDeletteButton {
     border: none;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .deleteButton {
+    font-size: 1.4rem;
   }
   .titleName {
-    font-size: 1rem;
+    font-size: 1.4rem;
+  }
+  .spots {
+    gap: 0;
+    padding: 1rem;
   }
   .spots span {
     font-size: 1.4rem;

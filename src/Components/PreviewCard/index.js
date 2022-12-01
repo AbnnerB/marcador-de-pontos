@@ -9,7 +9,7 @@ export default function PreviewCard({
   colorDeleteButton,
 }) {
   return (
-    <section className="containerInfo">
+    <section className="containerInfo" style={{ border: "none" }}>
       <div
         className="nameAndDeletteButton"
         style={{ color: colorName, backgroundColor: backgroundName }}
@@ -19,7 +19,10 @@ export default function PreviewCard({
           <AiFillDelete />
         </button>
       </div>
-      <div className="spots" style={{ backgroundColor: backgroundPoints }}>
+      <div
+        className="spots"
+        style={{ backgroundColor: backgroundPoints, flexDirection: "row" }}
+      >
         <button>
           <BsBookmarkDash />
         </button>

@@ -16,6 +16,9 @@ export default function Content() {
   const [backgroundPoints, setBackgroundPoints] = useState("");
   const [colorDeleteButton, setColorDeleteButton] = useState("");
 
+  const [now, setNow] = useState("");
+  const dateToday = new Date().toLocaleTimeString();
+
   const [showContainer, setShowContainer] = useState(false);
 
   const [arrayContainerInfo, setArrayContainerInfo] = useState(
@@ -61,6 +64,7 @@ export default function Content() {
       id: ids,
       name: names,
       spots: points,
+      date: now,
       colorName: colorName,
       backgroundName: backgroundName,
       backgroundPoints: backgroundPoints,
@@ -90,12 +94,15 @@ export default function Content() {
         if (item.spots < 1000) {
           item.spots += 1;
         }
+        item.date = dateToday;
       }
       return item;
     });
 
     setArrayContainerInfo(mapping);
     localStorage.setItem("arrayContainerInfoLocal", JSON.stringify(mapping));
+
+    setNow(dateToday);
   }
 
   function lessOnePoint(id) {
@@ -104,6 +111,7 @@ export default function Content() {
         if (item.spots > 0) {
           item.spots = item.spots - 1;
         }
+        item.date = dateToday;
       }
 
       return item;
@@ -111,6 +119,8 @@ export default function Content() {
 
     setArrayContainerInfo(mapping);
     localStorage.setItem("arrayContainerInfoLocal", JSON.stringify(mapping));
+
+    setNow(dateToday);
   }
 
   return (
@@ -129,27 +139,30 @@ export default function Content() {
             value={names}
             onChange={(e) => setNames(e.target.value)}
             autoFocus
+            className="inputCreateMarker"
           />
-          <input
-            type="color"
-            value={colorName}
-            onChange={(e) => setColorName(e.target.value)}
-          />
-          <input
-            type="color"
-            value={backgroundName}
-            onChange={(e) => setBackgroundName(e.target.value)}
-          />
-          <input
-            type="color"
-            value={colorDeleteButton}
-            onChange={(e) => setColorDeleteButton(e.target.value)}
-          />
-          <input
-            type="color"
-            value={backgroundPoints}
-            onChange={(e) => setBackgroundPoints(e.target.value)}
-          />
+          <div className="boxColors">
+            <input
+              type="color"
+              value={colorName}
+              onChange={(e) => setColorName(e.target.value)}
+            />
+            <input
+              type="color"
+              value={backgroundName}
+              onChange={(e) => setBackgroundName(e.target.value)}
+            />
+            <input
+              type="color"
+              value={colorDeleteButton}
+              onChange={(e) => setColorDeleteButton(e.target.value)}
+            />
+            <input
+              type="color"
+              value={backgroundPoints}
+              onChange={(e) => setBackgroundPoints(e.target.value)}
+            />
+          </div>
 
           {names.length > 0 && (
             <PreviewCard
@@ -161,7 +174,7 @@ export default function Content() {
             />
           )}
 
-          <div>
+          <div className="divButtonsCreateCancel">
             <button onClick={addContainerInfo}>Criar</button>
             <button onClick={showContainerCreateMarker}>Cancelar</button>
           </div>

@@ -23,13 +23,16 @@ export default function MarkerCard({
         </button>
       </div>
       <div className="spots" style={{ backgroundColor: item.backgroundPoints }}>
-        <button onClick={() => lessOnePoint(item.id)}>
-          <BsBookmarkDash />
-        </button>
-        <span>{item.spots}</span>
-        <button onClick={() => moreOnePoint(item.id)}>
-          <BsBookmarkPlus />
-        </button>
+        <div className="spotsFlex">
+          <button onClick={() => lessOnePoint(item.id)}>
+            <BsBookmarkDash />
+          </button>
+          <span>{item.spots}</span>
+          <button onClick={() => moreOnePoint(item.id)}>
+            <BsBookmarkPlus />
+          </button>
+        </div>
+        {item.spots > 0 && <p>Ultima Marcação: {item.date} </p>}
       </div>
     </section>
   );
