@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 
 import "./styles.css";
 
+import MarkerCard from "../Components/MarkerCard";
+
 import { AiFillDelete } from "react-icons/ai";
 import { BsBookmarkDash, BsBookmarkPlus } from "react-icons/bs";
 
 export default function Content() {
   const [names, setNames] = useState("");
-  const [points, setPoints] = useState(0);
-  //   let points = 0;
+  // const [points, setPoints] = useState(0);
+  const points = 0;
   const [ids, setIds] = useState(0);
 
   const [showContainer, setShowContainer] = useState(false);
@@ -116,6 +118,9 @@ export default function Content() {
             onChange={(e) => setNames(e.target.value)}
             autoFocus
           />
+
+          {names.length > 0 && <MarkerCard nameUser={names} pontos={points} />}
+
           <div>
             <button onClick={addContainerInfo}>Criar</button>
             <button onClick={showContainerCreateMarker}>Cancelar</button>
@@ -131,6 +136,16 @@ export default function Content() {
       </header>
       <main className="containerMain">
         {arrayContainerInfo.map((item, index) => (
+          //<MarkerCard
+          // index={index}
+          // nameUser={item.name}
+          // idButton={item.id}
+          // pontos={item.spots}
+          // deleteContainerInfo={deleteContainerInfo}
+          // lessOnePoint={lessOnePoint}
+          // moreOnePoint={moreOnePoint}
+          ///>
+
           <section key={index} className="containerInfo">
             <div className="nameAndDeletteButton">
               <p className="titleName">{item.name}</p>
