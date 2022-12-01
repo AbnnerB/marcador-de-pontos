@@ -2,16 +2,19 @@ import { useEffect, useState } from "react";
 
 import "./styles.css";
 
-import MarkerCard from "../Components/MarkerCard";
-
-import { AiFillDelete } from "react-icons/ai";
-import { BsBookmarkDash, BsBookmarkPlus } from "react-icons/bs";
+import MarkerCard from "../Components/MarkerCard/MarkerCard";
+import PreviewCard from "../Components/PreviewCard";
 
 export default function Content() {
   const [names, setNames] = useState("");
   // const [points, setPoints] = useState(0);
   const points = 0;
   const [ids, setIds] = useState(0);
+
+  const [colorName, setColorName] = useState("");
+  const [backgroundName, setBackgroundName] = useState("");
+  const [backgroundPoints, setBackgroundPoints] = useState("");
+  const [colorDeleteButton, setColorDeleteButton] = useState("");
 
   const [showContainer, setShowContainer] = useState(false);
 
@@ -58,11 +61,16 @@ export default function Content() {
       id: ids,
       name: names,
       spots: points,
+      colorName: colorName,
+      backgroundName: backgroundName,
+      backgroundPoints: backgroundPoints,
+      colorDeleteButton: colorDeleteButton,
     };
     setIds(ids + 1);
 
     setArrayContainerInfo([...arrayContainerInfo, newObj]);
     showContainerCreateMarker();
+    setNames("");
   }
 
   function deleteContainerInfo(id) {
@@ -118,8 +126,36 @@ export default function Content() {
             onChange={(e) => setNames(e.target.value)}
             autoFocus
           />
+          <input
+            type="color"
+            value={colorName}
+            onChange={(e) => setColorName(e.target.value)}
+          />
+          <input
+            type="color"
+            value={backgroundName}
+            onChange={(e) => setBackgroundName(e.target.value)}
+          />
+          <input
+            type="color"
+            value={colorDeleteButton}
+            onChange={(e) => setColorDeleteButton(e.target.value)}
+          />
+          <input
+            type="color"
+            value={backgroundPoints}
+            onChange={(e) => setBackgroundPoints(e.target.value)}
+          />
 
-          {names.length > 0 && <MarkerCard nameUser={names} pontos={points} />}
+          {names.length > 0 && (
+            <PreviewCard
+              nameUser={names}
+              colorName={colorName}
+              backgroundName={backgroundName}
+              backgroundPoints={backgroundPoints}
+              colorDeleteButton={colorDeleteButton}
+            />
+          )}
 
           <div>
             <button onClick={addContainerInfo}>Criar</button>
@@ -136,36 +172,39 @@ export default function Content() {
       </header>
       <main className="containerMain">
         {arrayContainerInfo.map((item, index) => (
-          //<MarkerCard
-          // index={index}
-          // nameUser={item.name}
-          // idButton={item.id}
-          // pontos={item.spots}
-          // deleteContainerInfo={deleteContainerInfo}
-          // lessOnePoint={lessOnePoint}
-          // moreOnePoint={moreOnePoint}
-          ///>
+          <div key={index}>
+            <MarkerCard
+              index={index}
+              item={item}
+              deleteContainerInfo={deleteContainerInfo}
+              lessOnePoint={lessOnePoint}
+              moreOnePoint={moreOnePoint}
+              // nameUser={item.name}
+              // idButton={item.id}
+              // pontos={item.spots}
+            />
+          </div>
 
-          <section key={index} className="containerInfo">
-            <div className="nameAndDeletteButton">
-              <p className="titleName">{item.name}</p>
-              <button
-                className="deleteButton"
-                onClick={() => deleteContainerInfo(item.id)}
-              >
-                <AiFillDelete />
-              </button>
-            </div>
-            <div className="spots">
-              <button onClick={() => lessOnePoint(item.id)}>
-                <BsBookmarkDash />
-              </button>
-              <span>{item.spots}</span>
-              <button onClick={() => moreOnePoint(item.id)}>
-                <BsBookmarkPlus />
-              </button>
-            </div>
-          </section>
+          // <section key={index} className="containerInfo">
+          //   <div className="nameAndDeletteButton">
+          //     <p className="titleName">{item.name}</p>
+          //     <button
+          //       className="deleteButton"
+          //       onClick={() => deleteContainerInfo(item.id)}
+          //     >
+          //       <AiFillDelete />
+          //     </button>
+          //   </div>
+          //   <div className="spots">
+          //     <button onClick={() => lessOnePoint(item.id)}>
+          //       <BsBookmarkDash />
+          //     </button>
+          //     <span>{item.spots}</span>
+          //     <button onClick={() => moreOnePoint(item.id)}>
+          //       <BsBookmarkPlus />
+          //     </button>
+          //   </div>
+          // </section>
         ))}
       </main>
     </div>
