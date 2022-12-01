@@ -56,6 +56,7 @@ header {
   font-size: 1em;
   font-weight: bold;
   padding: 0 1em;
+  border-radius: 20px;
 }
 
 .containerMain {
@@ -68,20 +69,23 @@ header {
 }
 
 .containerInfo {
-  background-color: rgb(145, 142, 142);
   border: 3px solid black;
   border-radius: 12px;
-  width: 300px;
+  min-width: 300px;
   display: flex;
   flex-direction: column;
 }
 .nameAndDeletteButton {
+  width: 100%;
+  height: 40%;
+  background-color: rgb(145, 142, 142);
   color: rgb(255, 255, 255);
   padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px dashed black;
+  border-radius: 12px 12px 0 0;
 }
 .titleName {
   font-size: 2rem;
@@ -98,11 +102,13 @@ header {
 }
 
 .spots {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   gap: 1rem;
-  padding: 1rem;
+  padding: 2rem 1rem;
   background-color: antiquewhite;
   border-radius: 0px 0px 12px 12px;
 }
