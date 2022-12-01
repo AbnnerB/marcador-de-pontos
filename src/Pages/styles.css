@@ -131,3 +131,51 @@ header {
   align-self: center;
   padding: 0px;
 }
+
+@media screen and (max-width: 430px) {
+  .headerContent {
+    padding: 0.5em 0.3rem;
+    width: 100%;
+    margin-bottom: 0px;
+  }
+  .headerContent h1 {
+    font-size: 1.2rem;
+  }
+  .headerContent button {
+    font-size: 1rem;
+  }
+
+  .containerMain {
+    margin: 0px;
+    min-width: 100px;
+    max-width: 100%;
+    display: block;
+  }
+
+  .containerInfo {
+    border: none;
+    border-bottom: 3px solid black;
+    min-width: 100px;
+    width: 100%;
+    max-width: 450px;
+  }
+
+  .containerInfo,
+  .nameAndDeletteButton,
+  .spots {
+    border-radius: 0px 0px 0px 0px;
+  }
+
+  .nameAndDeletteButton {
+    border: none;
+  }
+  .titleName {
+    font-size: 1rem;
+  }
+  .spots span {
+    font-size: 1.4rem;
+  }
+  .spots button {
+    font-size: 1.4rem;
+  }
+}
