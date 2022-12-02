@@ -7,7 +7,6 @@ import PreviewCard from "../Components/PreviewCard";
 
 export default function Content() {
   const [names, setNames] = useState("");
-  // const [points, setPoints] = useState(0);
   const points = 0;
   const [ids, setIds] = useState(0);
 
